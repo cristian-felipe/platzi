@@ -22,7 +22,7 @@ pipeline {
     stage('Run tests') {
       steps {
         echo "${dockerImage.id}"
-        docker.run "${dockerImage.id} npm t"
+        sh "docker run ${dockerImage.id} npm test"
       }
     }
     stage('Publish') {
@@ -31,6 +31,7 @@ pipeline {
       }
       steps {
         script {
+          echo "publish"
           docker.withRegistry("", "DockerHubCredentials") {
             dockerImage.push()
           }
