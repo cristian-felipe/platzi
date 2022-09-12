@@ -31,7 +31,6 @@ pipeline {
       }
       steps {
         script {
-          echo "publish"
           docker.withRegistry("", "DockerHubCredentials") {
             dockerImage.push()
           }
