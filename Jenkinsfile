@@ -22,7 +22,7 @@ pipeline {
     stage('Run tests') {
       steps {
         echo "${dockerImage.id}"
-        sh docker.run "${dockerImage.id} npm t"
+        docker.run "${dockerImage.id} npm t"
       }
     }
     stage('Publish') {
