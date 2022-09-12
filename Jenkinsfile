@@ -14,8 +14,8 @@ pipeline {
       steps {
         script {
           dir("webapp") {
-            echo "${env.BUILD_NUMBER}"
             dockerImage = docker.build "${env.ARTIFACT_ID}"
+            echo "${dockerImage}"
           }
         }
       }
