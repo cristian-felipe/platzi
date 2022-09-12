@@ -22,7 +22,7 @@ pipeline {
     stage('Run tests') {
       steps {
         echo "${dockerImage.id}"
-        ls
+        dir
         sh "docker run ${dockerImage.id} npm test"
       }
     }
