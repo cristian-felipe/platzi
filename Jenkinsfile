@@ -26,6 +26,7 @@ pipeline {
       }
     }
     stage('Publish') {
+      echo "publish"
       when {
         branch 'main'
       }
