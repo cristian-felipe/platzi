@@ -14,7 +14,6 @@ pipeline {
       steps {
         script {
           dir("") {
-            echo "${env.BUILD_NUMBER}"
             dockerImage = docker.build "${env.ARTIFACT_ID}"
           }
         }
@@ -22,6 +21,7 @@ pipeline {
     }
     stage('Run tests') {
       steps {
+        echo "${env.BUILD_NUMBER}"
         sh "docker run ${dockerImage.id} npm test"
       }
     }
