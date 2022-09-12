@@ -13,8 +13,8 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          dir("webapp") {
-            dockerImage = docker build "${env.ARTIFACT_ID}"
+          dir("") {
+            dockerImage = docker.build "${env.ARTIFACT_ID}"
           }
         }
       }
@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Publish') {
       when {
-        branch 'master'
+        branch 'main'
       }
       steps {
         script {
