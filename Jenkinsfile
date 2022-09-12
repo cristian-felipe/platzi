@@ -22,7 +22,7 @@ pipeline {
     stage('Run tests') {
       steps {
         echo "${dockerImage.id}"
-        sh "winpty docker run ${dockerImage.id} npm test"
+        sh "winpty docker run -it ${dockerImage.id} npm t"
       }
     }
     stage('Publish') {
