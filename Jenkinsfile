@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Run tests') {
       steps {
-        echo "${env.BUILD_NUMBER}"
+        echo "${dockerImage.id}"
         sh "docker run ${dockerImage.id} npm test"
       }
     }
