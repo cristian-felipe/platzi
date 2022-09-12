@@ -10,11 +10,13 @@ pipeline {
   }
 
   stages {
+    echo"env.BUILD_NUMBER"
     stage('Build') {
       steps {
         script {
+          dir("webapp") {
             dockerImage = docker.build "${env.ARTIFACT_ID}"
-          
+          }
         }
       }
     }
@@ -25,7 +27,7 @@ pipeline {
     }
     stage('Publish') {
       when {
-        branch 'main'
+        branch 'master'
       }
       steps {
         script {
