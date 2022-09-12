@@ -26,12 +26,12 @@ pipeline {
       }
     }
     stage('Publish') {
-      echo "publish"
       when {
         branch 'main'
       }
       steps {
         script {
+          echo "publish"
           docker.withRegistry("", "DockerHubCredentials") {
             dockerImage.push()
           }
